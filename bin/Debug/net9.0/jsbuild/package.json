@@ -1,0 +1,19 @@
+{
+  "name": "temppera",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build --config vite.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@perawallet/connect": "^1.4.2"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
