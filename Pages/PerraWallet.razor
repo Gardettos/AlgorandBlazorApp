@@ -1,0 +1,23 @@
+@page "/perawallet"
+@using AlgorandBlazorApp.Services
+@inject PeraWalletService PeraWallet
+
+<PageTitle>Pera Wallet</PageTitle>
+
+<h1>Pera Wallet Integration</h1>
+<button class="btn btn-primary" @onclick="ConnectWallet">Connect Pera Wallet</button>
+
+@if (accounts != null)
+{
+    <p>Connected account(s): @string.Join(", ", accounts)</p>
+}
+
+@code {
+    private string[]? accounts;
+
+    private async Task ConnectWallet()
+    {
+        accounts = await PeraWallet.ConnectAsync();
+        StateHasChanged();
+    }
+}
