@@ -5,7 +5,9 @@
 <PageTitle>Pera Wallet</PageTitle>
 
 <h1>Pera Wallet Integration</h1>
-<button class="btn btn-primary" @onclick="ConnectWallet">Connect Pera Wallet</button>
+<button class="btn btn-primary" @onclick="OnWalletButtonClick">
+    @(accounts == null ? "Connect Pera Wallet" : "Disconnect")
+</button>
 
 @if (accounts != null)
 {
@@ -15,9 +17,17 @@
 @code {
     private string[]? accounts;
 
-    private async Task ConnectWallet()
+    private async Task OnWalletButtonClick()
     {
-        accounts = await PeraWallet.ConnectAsync();
+        if (accounts == null)
+        {
+            accounts = await PeraWallet.ConnectAsync();
+        }
+        else
+        {
+            await PeraWallet.DisconnectAsync();
+            accounts = null;
+        }
         StateHasChanged();
     }
 }
